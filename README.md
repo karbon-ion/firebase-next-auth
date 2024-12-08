@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+Authenticated with [Firebase](https://console.firebase.google.com) and Localized using [Next-Intl's](https://next-intl-docs.vercel.app/docs/getting-started) app routing
+
 ## Getting Started
 
 Create a .en.local file in the root of the directory with the following content 
