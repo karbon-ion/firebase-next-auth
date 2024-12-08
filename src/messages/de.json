@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "Hallo Welt!",
+    "about": "Gehe zur Über-Seite"
+  },
+  "SignupPage": {
+    "title": "Konto erstellen",
+    "fields": {
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen"
+    },
+    "errors": {
+      "passwordMismatch": "Die Passwörter stimmen nicht überein."
+    },
+    "loading": "Registriere...",
+    "submit": "Registrieren",
+    "alreadyHaveAccount": "Hast du schon ein Konto?",
+    "loginLink": "Anmelden"
+  },
+  "LoginPage": {
+    "title": "Melden Sie sich in Ihrem Konto an",
+    "fields": {
+      "email": "E-Mail-Adresse",
+      "password": "Passwort"
+    },
+    "submit": "Anmelden",
+    "loading": "Anmeldung läuft...",
+    "noAccount": "Sie haben noch kein Konto?",
+    "signupLink": "Registrieren",
+    "errors": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    }
+  },
+  "DashboardPage": {
+    "title": "Armaturenbrett",
+    "loading": "Lädt Ihr Armaturenbrett...",
+    "logout": "Abmelden",
+    "welcome": "Willkommen, {name}!",
+    "instructions": "Hier finden Sie eine Übersicht über Ihr Konto und Ihre Aktivitäten.",
+    "widget1": {
+      "title": "Ihr Profil",
+      "description": "Verwalten Sie Ihre Kontoinformationen und Einstellungen."
+    },
+    "widget2": {
+      "title": "Letzte Aktivität",
+      "description": "Sehen Sie sich Ihre letzten Aktionen und Updates an."
+    }
+  }
+}

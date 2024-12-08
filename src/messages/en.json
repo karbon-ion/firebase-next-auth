@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "SignupPage": {
+    "title": "Create an Account",
+    "fields": {
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    },
+    "errors": {
+      "passwordMismatch": "Passwords do not match."
+    },
+    "loading": "Signing up...",
+    "submit": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Log in"
+  },
+  "LoginPage": {
+    "title": "Sign in to your account",
+    "fields": {
+      "email": "Email Address",
+      "password": "Password"
+    },
+    "submit": "Sign In",
+    "loading": "Signing in...",
+    "noAccount": "Don't have an account?",
+    "signupLink": "Sign Up",
+    "errors": {
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "DashboardPage": {
+    "title": "Dashboard",
+    "loading": "Loading your dashboard...",
+    "logout": "Sign Out",
+    "welcome": "Welcome, {name}!",
+    "instructions": "Here's an overview of your account and activity.",
+    "widget1": {
+      "title": "Your Profile",
+      "description": "Manage your account information and preferences."
+    },
+    "widget2": {
+      "title": "Recent Activity",
+      "description": "View your latest actions and updates."
+    }
+  }
+}
