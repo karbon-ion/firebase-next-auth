@@ -4,12 +4,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Create a .en.local file in the root of the directory with the following content 
 
+```bash
 NEXT_PUBLIC_FIREBASE_API_KEY = "your firebase API hey here"
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN = "your fire base Auth Domain here"
 NEXT_PUBLIC_FIREBASE_PROJECT_ID = "your forebase Project Id here"
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = "your forebase Storage Bucket here"
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID = "your firebase Messaging Sender Id here"
 NEXT_PUBLIC_FIREBASE_APP_ID = "your firebase App Id here"
+```
+
 
 First, run the development server:
 
