@@ -7,7 +7,7 @@ import { getCurrentUser, sendVerificationEmail } from "@/firebase/auth";
 import type { User } from "firebase/auth";
 
 const VerifyEmailPage = () => {
-  const t = useTranslations("VerifyEmailPage");
+  const t = useTranslations("VerifyPage");
   const locale = useLocale();
   const router = useRouter();
   

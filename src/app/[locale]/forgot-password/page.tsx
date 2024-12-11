@@ -21,7 +21,7 @@ const ForgotPasswordPage = () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       await resetPassword(email);
       setSuccess(true);
     } catch (err: unknown) {
@@ -38,7 +38,7 @@ const ForgotPasswordPage = () => {
         <h1 className="text-2xl font-semibold text-center text-gray-800 mb-6">
           {t("title")}
         </h1>
-        
+
         {error && (
           <div className="mb-4 text-sm text-red-600 bg-red-100 border border-red-400 rounded-md p-2">
             {error}
@@ -50,17 +50,14 @@ const ForgotPasswordPage = () => {
             <div className="mb-4 text-sm text-green-600 bg-green-100 border border-green-400 rounded-md p-2">
               {t("successMessage")}
             </div>
-            <button
-              onClick={() => router.push(`/${locale}/sign-in`)}
-              className="text-blue-600 hover:underline"
-            >
-              {t("backToLogin")}
-            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 {t("fields.email")}
               </label>
               <input
@@ -83,9 +80,12 @@ const ForgotPasswordPage = () => {
             </button>
           </form>
         )}
-        
+
         <p className="mt-4 text-sm text-center text-gray-600">
-          <a href={`/${locale}/sign-in`} className="text-blue-600 hover:underline">
+          <a
+            href={`/${locale}/sign-in`}
+            className="text-blue-600 hover:underline"
+          >
             {t("backToLogin")}
           </a>
         </p>
@@ -94,4 +94,4 @@ const ForgotPasswordPage = () => {
   );
 };
 
-export default ForgotPasswordPage; 
+export default ForgotPasswordPage;
