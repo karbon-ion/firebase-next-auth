@@ -19,6 +19,8 @@ const DashboardPage = () => {
             const currentUser = await getCurrentUser();
             if (!currentUser) {
             router.push(`/${locale}/sign-in`); // Redirect if not authenticated
+            } else if (!currentUser.emailVerified) {
+                router.push(`/${locale}/verify-email`); // Redirect if email not verified
             } else {
             setUser(currentUser);
             }
@@ -31,7 +33,7 @@ const DashboardPage = () => {
         };
 
         fetchUser();
-    }, [router]);
+    }, [router, locale]);
 
   const handleSignOut = async () => {
     await signOutUser();

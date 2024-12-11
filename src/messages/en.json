@@ -30,7 +30,8 @@
     "signupLink": "Sign Up",
     "errors": {
       "generic": "Something went wrong. Please try again."
-    }
+    },
+    "forgotPassword": "Forgot Password?"
   },
   "DashboardPage": {
     "title": "Dashboard",
@@ -45,6 +46,31 @@
     "widget2": {
       "title": "Recent Activity",
       "description": "View your latest actions and updates."
+    }
+  },
+  "ForgotPasswordPage": {
+    "title": "Reset Password",
+    "fields": {
+      "email": "Email Address"
+    },
+    "submit": "Send Reset Link",
+    "loading": "Sending...",
+    "successMessage": "If an account exists with this email, you will receive password reset instructions.",
+    "backToLogin": "Back to Login",
+    "errors": {
+      "generic": "An error occurred. Please try again."
+    }
+  },
+  "VerifyPage": {
+    "loading": "Processing your request...",
+    "success": "Your email has been verified successfully!",
+    "backToLogin": "Back to Login",
+    "resetPassword": "Reset Password",
+    "newPassword": "New Password",
+    "processing": "Processing...",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "resetFailed": "Failed to reset password. Please try again."
     }
   }
 }
