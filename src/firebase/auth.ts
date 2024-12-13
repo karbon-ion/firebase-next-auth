@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, UserCredential, User } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail, sendEmailVerification, User, UserCredential } from "firebase/auth";
 import { auth } from "./config";
 
 
@@ -14,6 +14,7 @@ export const SignIn = async (email: string, password: string): Promise<UserCrede
 export const SignUp = async (email: string, password: string) => {
     try {
         const response = await createUserWithEmailAndPassword(auth, email, password);
+        await sendVerificationEmail(response.user);
         return response;
     } catch (error) {
         throw error;
@@ -31,6 +32,22 @@ export const onAuthStateChange = (callback: (user: User | null) => void) => {
 export const logout = async () => {
     try {
         await signOut(auth);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const resetPassword = async (email: string) => {
+    try {
+        await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const sendVerificationEmail = async (user: User) => {
+    try {
+        await sendEmailVerification(user);
     } catch (error) {
         throw error;
     }

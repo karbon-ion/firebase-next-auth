@@ -108,12 +108,20 @@ const LoginPage = () => {
             {loading ? t("loading") : t("submit")}
           </button>
         </form>
-        <p className="mt-4 text-sm text-center text-gray-600">
-          {t("noAccount")}{" "}
-          <a href={`/${locale}/sign-up`} className="text-blue-600 hover:underline">
-            {t("signupLink")}
+        <div className="flex flex-col space-y-4 mt-4 text-sm text-center text-gray-600">
+          <a 
+            href={`/${locale}/forgot-password`} 
+            className="text-blue-600 hover:underline"
+          >
+            {t("forgotPassword")}
           </a>
-        </p>
+          <p>
+            {t("noAccount")}{" "}
+            <a href={`/${locale}/sign-up`} className="text-blue-600 hover:underline">
+              {t("signupLink")}
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

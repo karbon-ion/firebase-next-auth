@@ -46,5 +46,35 @@
       "title": "Letzte Aktivität",
       "description": "Sehen Sie sich Ihre letzten Aktionen und Updates an."
     }
+  },
+  "ForgotPasswordPage": {
+    "title": "Passwort zurücksetzen",
+    "fields": {
+      "email": "E-Mail-Adresse"
+    },
+    "submit": "Link zum Zurücksetzen senden",
+    "loading": "Wird gesendet...",
+    "successMessage": "Wenn ein Konto mit dieser E-Mail-Adresse existiert, erhalten Sie Anweisungen zum Zurücksetzen des Passworts.",
+    "backToLogin": "Zurück zum Login",
+    "errors": {
+      "generic": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  },
+  "VerifyPage": {
+    "loading": "Verarbeite Ihre Anfrage...",
+    "success": "Ihre E-Mail-Adresse wurde erfolgreich verifiziert!",
+    "backToLogin": "Zurück zum Login",
+    "title": "E-Mail verifizieren",
+    "instructions": "Bitte verifizieren Sie Ihre E-Mail-Adresse, indem Sie auf den Link in der E-Mail klicken, die wir an {email} gesendet haben.",
+    "resend": "Verifizierungsmail erneut senden",
+    "resending": "Wird gesendet...",
+    "resendSuccess": "Verifizierungsmail erfolgreich erneut gesendet!",
+    "resetPassword": "Passwort zurücksetzen",
+    "newPassword": "Neues Passwort",
+    "processing": "Wird verarbeitet...",
+    "errors": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "resetFailed": "Das Zurücksetzen des Passworts ist fehlgeschlagen. Bitte versuchen Sie es erneut."
+    }
   }
 }

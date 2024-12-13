@@ -1,15 +1,14 @@
-// src/app/[locale]/signup/page.tsx
 "use client";
 
 import React, { useState } from "react";
-import { useTranslations, useLocale } from "next-intl"; // For translations and locale detection
+import { useTranslations, useLocale } from "next-intl"; 
 import { useRouter } from "next/navigation";
 import { SignUp } from "@/firebase/auth";
 import { withPublicRoute } from "@/components/hoc/withPublicRoute";
 
 const SignupPage = () => {
   const t = useTranslations("SignupPage");
-  const locale = useLocale(); // Get the current locale
+  const locale = useLocale(); 
   const router = useRouter();
 
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
@@ -34,13 +33,12 @@ const SignupPage = () => {
       setLoading(true);
       setError(null);
 
-      // Call Firebase signup
       await SignUp(email, password);
 
-      // Redirect to the localized dashboard
-      router.push(`/${locale}/sign-in`);
-    } catch (err: any) {
-      setError(err.message);
+      router.push(`/${locale}/verify-email`);
+    } catch (err: unknown) {
+      const error = err as Error;
+      setError(error.message);
     } finally {
       setLoading(false);
     }

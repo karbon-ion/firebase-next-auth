@@ -16,23 +16,25 @@ const DashboardPage = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-          try {
-              const currentUser = await getCurrentUser();
-              if (!currentUser) {
-              router.push(`/${locale}/sign-in`); // Redirect if not authenticated
-              } else {
-              setUser(currentUser);
-              }
-          } catch (err) {
-              console.error(err);
-              router.push(`/${locale}/sign-in`); // Redirect on error
-          } finally {
-              setLoading(false);
-          }
+        try {
+            const currentUser = await getCurrentUser();
+            if (!currentUser) {
+            router.push(`/${locale}/sign-in`); // Redirect if not authenticated
+            } else if (!currentUser.emailVerified) {
+                router.push(`/${locale}/verify-email`); // Redirect if email not verified
+            } else {
+            setUser(currentUser);
+            }
+        } catch (err) {
+            console.error(err);
+            router.push(`/${locale}/sign-in`); // Redirect on error
+        } finally {
+            setLoading(false);
+        }
         };
 
         fetchUser();
-    }, [router]);
+    }, [router, locale]);
 
   const handleSignOut = async () => {
     await signOutUser();
