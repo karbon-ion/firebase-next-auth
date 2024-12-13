@@ -1,9 +1,8 @@
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { app } from "./config";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, UserCredential, User } from "firebase/auth";
+import { auth } from "./config";
 
-const auth = getAuth(app);
 
-export const SignIn = async (email: string, password: string) => {
+export const SignIn = async (email: string, password: string): Promise<UserCredential> => {
     try {
         const response = await signInWithEmailAndPassword(auth, email, password);
         return response;
@@ -21,17 +20,13 @@ export const SignUp = async (email: string, password: string) => {
     }
 };
 
-export const getCurrentUser = (): Promise<any> => {
-    return new Promise((resolve, reject) => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          resolve(user);
-        } else {
-          resolve(null);
-        }
-      }, reject);
-    });
-};
+export const getCurrentUser = (): User | null => {
+    return auth.currentUser;
+}
+
+export const onAuthStateChange = (callback: (user: User | null) => void) => {
+    return onAuthStateChanged(auth, callback);
+}
 
 export const logout = async () => {
     try {

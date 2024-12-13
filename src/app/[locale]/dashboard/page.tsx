@@ -5,29 +5,30 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { getCurrentUser, logout as signOutUser } from "@/firebase/auth"; // Firebase helpers
+import { withAuth } from "@/components/hoc/withAuth";
 
 const DashboardPage = () => {
   const t = useTranslations("DashboardPage");
   const locale = useLocale();
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchUser = async () => {
-        try {
-            const currentUser = await getCurrentUser();
-            if (!currentUser) {
-            router.push(`/${locale}/sign-in`); // Redirect if not authenticated
-            } else {
-            setUser(currentUser);
-            }
-        } catch (err) {
-            console.error(err);
-            router.push(`/${locale}/sign-in`); // Redirect on error
-        } finally {
-            setLoading(false);
-        }
+          try {
+              const currentUser = await getCurrentUser();
+              if (!currentUser) {
+              router.push(`/${locale}/sign-in`); // Redirect if not authenticated
+              } else {
+              setUser(currentUser);
+              }
+          } catch (err) {
+              console.error(err);
+              router.push(`/${locale}/sign-in`); // Redirect on error
+          } finally {
+              setLoading(false);
+          }
         };
 
         fetchUser();
@@ -81,4 +82,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default withAuth(DashboardPage);

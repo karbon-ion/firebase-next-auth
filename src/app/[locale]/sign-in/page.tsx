@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { SignIn, getCurrentUser } from "@/firebase/auth"; // Assume you have a Firebase auth helper
+import { withPublicRoute } from "@/components/hoc/withPublicRoute";
 
 const LoginPage = () => {
   const t = useTranslations("LoginPage");
@@ -118,4 +119,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withPublicRoute(LoginPage);

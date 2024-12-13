@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useTranslations, useLocale } from "next-intl"; // For translations and locale detection
 import { useRouter } from "next/navigation";
 import { SignUp } from "@/firebase/auth";
+import { withPublicRoute } from "@/components/hoc/withPublicRoute";
 
 const SignupPage = () => {
   const t = useTranslations("SignupPage");
@@ -118,4 +119,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default withPublicRoute(SignupPage);
