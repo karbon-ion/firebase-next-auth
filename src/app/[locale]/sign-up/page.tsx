@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { SignUp } from "@/firebase/auth";
 import { withPublicRoute } from "@/components/hoc/withPublicRoute";
+import { Link } from "@/i18n/routing";
 
 const SignupPage = () => {
   const t = useTranslations("SignupPage");
@@ -108,9 +109,9 @@ const SignupPage = () => {
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
           {t("alreadyHaveAccount")}{" "}
-          <a href={`/${locale}/login`} className="text-blue-600 hover:underline">
+          <Link href={"/sign-in"}>
             {t("loginLink")}
-          </a>
+          </Link>
         </p>
       </div>
     </div>

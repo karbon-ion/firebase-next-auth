@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { SignIn, getCurrentUser } from "@/firebase/auth"; // Assume you have a Firebase auth helper
 import { withPublicRoute } from "@/components/hoc/withPublicRoute";
+import { Link } from "@/i18n/routing";
 
 const LoginPage = () => {
   const t = useTranslations("LoginPage");
@@ -117,9 +118,9 @@ const LoginPage = () => {
           </a>
           <p>
             {t("noAccount")}{" "}
-            <a href={`/${locale}/sign-up`} className="text-blue-600 hover:underline">
+            <Link href={`/sign-up`}>
               {t("signupLink")}
-            </a>
+            </Link>
           </p>
         </div>
       </div>
