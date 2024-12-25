@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useSearchParams } from "next/navigation";
-import { onAuthStateChange } from "@/firebase/auth";
+import { onAuthStateChange } from "@/lib/firebase/auth";
 import { User } from "firebase/auth";
 import { useLocale } from "next-intl";
+import { LoadingScreen } from "../utilities/Loader";
 
 export function withPublicRoute(Component: React.ComponentType) {
     return function ProtectedRoute(props: any) {
@@ -28,7 +29,7 @@ export function withPublicRoute(Component: React.ComponentType) {
         }, [router, searchParams])
     
         if (loading) {
-          return <p>...Loading</p>
+          return <LoadingScreen />
         }
     
         return <Component {...props} />

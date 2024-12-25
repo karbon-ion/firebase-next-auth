@@ -1,4 +1,4 @@
-import { SignIn } from "@/firebase/auth";
+import { SignIn } from "@/lib/firebase/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

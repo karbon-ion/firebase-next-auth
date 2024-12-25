@@ -1,4 +1,4 @@
-import { logout } from "@/firebase/auth";
+import { logout } from "@/lib/firebase/auth";
 import { NextResponse } from "next/server";
 
 export async function POST() {

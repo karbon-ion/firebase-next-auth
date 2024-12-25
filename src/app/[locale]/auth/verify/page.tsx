@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { applyActionCode, verifyPasswordResetCode, confirmPasswordReset } from "firebase/auth";
-import  auth  from "@/firebase/auth";
+import  auth  from "@/lib/firebase/auth";
 
 const VerifyPage = () => {
   const searchParams = useSearchParams();

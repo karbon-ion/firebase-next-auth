@@ -3,14 +3,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
-import { SignIn, getCurrentUser } from "@/firebase/auth"; // Assume you have a Firebase auth helper
+import { SignIn, getCurrentUser } from "@/lib/firebase/auth"; // Assume you have a Firebase auth helper
 import { withPublicRoute } from "@/components/hoc/withPublicRoute";
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 
 const LoginPage = () => {
   const t = useTranslations("LoginPage");
-  const locale = useLocale(); // Get the current locale
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -33,7 +31,7 @@ const LoginPage = () => {
       await SignIn(formData.email, formData.password);
 
       // Redirect to the localized dashboard
-      router.push(`/${locale}/dashboard`);
+      router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || t("errors.generic"));
     } finally {
@@ -43,23 +41,23 @@ const LoginPage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-    try {
+      try {
         const currentUser = await getCurrentUser();
         if (currentUser) {
-        router.push(`/${locale}/dashboard`); // Redirect if authenticated
+          setUser(null);
+          router.push('/dashboard'); // Redirect if authenticated
         } else {
-        setUser(null);
         }
-    } catch (err) {
+      } catch (err) {
         console.error(err);
-        router.push(`/${locale}/dashboard`); // Redirect on error
-    } finally {
+        router.push('/dashboard'); // Redirect on error
+      } finally {
         setLoading(false);
-    }
+      }
     };
 
     fetchUser();
-}, [router]);
+  }, [router]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -102,23 +100,22 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`w-full py-2 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
           >
             {loading ? t("loading") : t("submit")}
           </button>
         </form>
         <div className="flex flex-col space-y-4 mt-4 text-sm text-center text-gray-600">
-          <a 
-            href={`/${locale}/forgot-password`} 
+          <Link
+            href='/auth/forgot-password'
             className="text-blue-600 hover:underline"
           >
             {t("forgotPassword")}
-          </a>
+          </Link>
           <p>
             {t("noAccount")}{" "}
-            <Link href={`/sign-up`}>
+            <Link href='/sign-up' className="text-blue-600 hover:underline">
               {t("signupLink")}
             </Link>
           </p>
