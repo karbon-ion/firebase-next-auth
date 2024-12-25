@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useTranslations, useLocale } from "next-intl"; 
-import { useRouter } from "next/navigation";
-import { SignUp } from "@/firebase/auth";
+import { SignUp } from "@/lib/firebase/auth";
 import { withPublicRoute } from "@/components/hoc/withPublicRoute";
+import { Link, useRouter } from "@/i18n/routing";
 
 const SignupPage = () => {
   const t = useTranslations("SignupPage");
@@ -35,7 +35,7 @@ const SignupPage = () => {
 
       await SignUp(email, password);
 
-      router.push(`/${locale}/verify-email`);
+      router.push('/auth/verify-email');
     } catch (err: unknown) {
       const error = err as Error;
       setError(error.message);
@@ -108,9 +108,9 @@ const SignupPage = () => {
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
           {t("alreadyHaveAccount")}{" "}
-          <a href={`/${locale}/login`} className="text-blue-600 hover:underline">
+          <Link href="/sign-in" className="text-blue-600 hover:underline">
             {t("loginLink")}
-          </a>
+          </Link>
         </p>
       </div>
     </div>

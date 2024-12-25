@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "@/i18n/routing";
-import { onAuthStateChange } from "@/firebase/auth";
+import { onAuthStateChange } from "@/lib/firebase/auth";
 import { User } from "firebase/auth";
+import { LoadingScreen } from "../utilities/Loader";
 
 export function withAuth(Component: React.ComponentType) {
     return function ProtectedRoute(props: any) {
@@ -15,7 +16,8 @@ export function withAuth(Component: React.ComponentType) {
             if (!user) {
               router.push('/sign-in')
             } else {
-              setLoading(false)
+              setLoading(true)
+              router.push('dashboard')
             }
           })
     
@@ -23,7 +25,7 @@ export function withAuth(Component: React.ComponentType) {
         }, [router])
     
         if (loading) {
-          return <p>...Loading</p>
+          return <LoadingScreen />
         }
     
         return <Component {...props} />

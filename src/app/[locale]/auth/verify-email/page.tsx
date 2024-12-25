@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
-import { getCurrentUser, sendVerificationEmail } from "@/firebase/auth";
+import { useRouter } from "next/router";
+import { getCurrentUser, sendVerificationEmail } from "@/lib/firebase/auth";
 import type { User } from "firebase/auth";
 
 const VerifyEmailPage = () => {
@@ -22,19 +22,19 @@ const VerifyEmailPage = () => {
       try {
         const currentUser = await getCurrentUser();
         if (!currentUser) {
-          router.push(`/${locale}/sign-in`);
+          router.push('/sign-in');
           return;
         }
         
         if (currentUser.emailVerified) {
-          router.push(`/${locale}/dashboard`);
+          router.push('/dashboard');
           return;
         }
         
         setUser(currentUser);
       } catch (err) {
         console.error(err);
-        router.push(`/${locale}/sign-in`);
+        router.push('/sign-in');
       } finally {
         setLoading(false);
       }
@@ -102,7 +102,7 @@ const VerifyEmailPage = () => {
           </button>
 
           <button
-            onClick={() => router.push(`/${locale}/sign-in`)}
+            onClick={() => router.push('/sign-in')}
             className="text-blue-600 hover:underline"
           >
             {t("backToLogin")}

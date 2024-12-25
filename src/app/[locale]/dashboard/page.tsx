@@ -4,8 +4,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
-import { getCurrentUser, logout as signOutUser } from "@/firebase/auth"; // Firebase helpers
+import { getCurrentUser, logout as signOutUser } from "@/lib/firebase/auth"; // Firebase helpers
 import { withAuth } from "@/components/hoc/withAuth";
+import { LoadingScreen } from "@/components/utilities/Loader";
 
 const DashboardPage = () => {
   const t = useTranslations("DashboardPage");
@@ -19,15 +20,15 @@ const DashboardPage = () => {
         try {
             const currentUser = await getCurrentUser();
             if (!currentUser) {
-            router.push(`/${locale}/sign-in`); // Redirect if not authenticated
+            router.push('/auth/sign-in'); // Redirect if not authenticated
             } else if (!currentUser.emailVerified) {
-                router.push(`/${locale}/verify-email`); // Redirect if email not verified
+                router.push('/auth/verify-email'); // Redirect if email not verified
             } else {
             setUser(currentUser);
             }
         } catch (err) {
             console.error(err);
-            router.push(`/${locale}/sign-in`); // Redirect on error
+            router.push('/sign-in'); // Redirect on error
         } finally {
             setLoading(false);
         }
@@ -38,13 +39,13 @@ const DashboardPage = () => {
 
   const handleSignOut = async () => {
     await signOutUser();
-    router.push(`/${locale}/sign-in`); // Redirect after logout
+    router.push('/sign-in'); // Redirect after logout
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p>{t("loading")}</p>
+        <LoadingScreen />
       </div>
     );
   }
