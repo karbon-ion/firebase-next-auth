@@ -2,16 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
-import { getCurrentUser, sendVerificationEmail } from "@/firebase/auth";
-import type { User } from "firebase/auth";
+import { useRouter } from "@/i18n/routing";
+import { sendVerificationEmail } from "@/lib/firebase/auth";
+import { useAppContext } from "@/components/context/AppContext";
+import { LoadingScreen } from "@/components/utilities/Loader";
 
 const VerifyEmailPage = () => {
   const t = useTranslations("VerifyPage");
   const locale = useLocale();
   const router = useRouter();
   
-  const [user, setUser] = useState<User | null>(null);
+  const { user } = useAppContext();
   const [loading, setLoading] = useState(true);
   const [resendLoading, setResendLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -20,21 +21,19 @@ const VerifyEmailPage = () => {
   useEffect(() => {
     const checkUser = async () => {
       try {
-        const currentUser = await getCurrentUser();
-        if (!currentUser) {
-          router.push(`/${locale}/sign-in`);
+        if (!user) {
+          router.push(`/sign-in`);
           return;
         }
         
-        if (currentUser.emailVerified) {
-          router.push(`/${locale}/dashboard`);
+        if (user.emailVerified) {
+          router.push(`/dashboard`);
           return;
         }
         
-        setUser(currentUser);
       } catch (err) {
         console.error(err);
-        router.push(`/${locale}/sign-in`);
+        router.push(`/sign-in`);
       } finally {
         setLoading(false);
       }
@@ -61,9 +60,9 @@ const VerifyEmailPage = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p>{t("loading")}</p>
-      </div>
+      // <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <p><LoadingScreen/></p>
+      // </div>
     );
   }
 
@@ -102,7 +101,7 @@ const VerifyEmailPage = () => {
           </button>
 
           <button
-            onClick={() => router.push(`/${locale}/sign-in`)}
+            onClick={() => router.push(`/sign-in`)}
             className="text-blue-600 hover:underline"
           >
             {t("backToLogin")}

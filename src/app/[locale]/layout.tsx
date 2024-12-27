@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { AppContextProvider } from "@/components/context/AppContext";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -46,7 +47,9 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <AppContextProvider>
             {children}
+          </AppContextProvider>
         </NextIntlClientProvider>
       </body>
     </html>

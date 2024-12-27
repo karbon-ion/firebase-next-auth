@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useTranslations, useLocale } from "next-intl";
 import { getCurrentUser, logout as signOutUser } from "@/lib/firebase/auth"; // Firebase helpers
 import { withAuth } from "@/components/hoc/withAuth";
@@ -17,21 +17,19 @@ const DashboardPage = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-        try {
-            const currentUser = await getCurrentUser();
-            if (!currentUser) {
-            router.push('/auth/sign-in'); // Redirect if not authenticated
-            } else if (!currentUser.emailVerified) {
-                router.push('/auth/verify-email'); // Redirect if email not verified
-            } else {
-            setUser(currentUser);
-            }
-        } catch (err) {
-            console.error(err);
-            router.push('/sign-in'); // Redirect on error
-        } finally {
-            setLoading(false);
-        }
+          try {
+              const currentUser = await getCurrentUser();
+              if (currentUser) {
+                setLoading(false);
+                setUser(currentUser);
+              }
+          } catch (err) {
+              console.error(err);
+              router.push('/sign-in'); // Redirect on error
+          } 
+          finally {
+              setLoading(false);
+          }
         };
 
         fetchUser();
@@ -44,9 +42,9 @@ const DashboardPage = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      // <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <LoadingScreen />
-      </div>
+      // </div>
     );
   }
 

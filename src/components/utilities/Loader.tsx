@@ -7,12 +7,12 @@ interface LoadingSplashScreenProps {
 
 export function LoadingScreen({ className = '' }: LoadingSplashScreenProps) {
   return (
-    <div className={`flex flex-col items-center justify-center p-4 ${className}`}>
+    <div className={"flex items-center justify-center min-h-screen bg-gray-100"}>
       <div className="mb-4">
         <Logo />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <p className="mt-4 text-lg font-medium text-muted-foreground">Loading...</p>
       </div>
-      <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      <p className="mt-4 text-lg font-medium text-muted-foreground">Loading...</p>
     </div>
   )
 }

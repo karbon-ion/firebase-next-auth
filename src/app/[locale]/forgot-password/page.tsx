@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
-import { resetPassword } from "@/firebase/auth";
+import { resetPassword } from "@/lib/firebase/auth";
 
 const ForgotPasswordPage = () => {
   const t = useTranslations("ForgotPasswordPage");

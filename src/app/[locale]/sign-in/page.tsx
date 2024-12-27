@@ -22,42 +22,25 @@ const LoginPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
-      setLoading(true);
-      setError(null);
-
       // Call Firebase signin
       await SignIn(formData.email, formData.password);
+      const currentUser = await getCurrentUser();
+      if (currentUser?.emailVerified){
+        router.push('/dashboard');
+      } else {
+        router.push('/verify-email');
+      }
 
-      // Redirect to the localized dashboard
-      router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || t("errors.generic"));
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const currentUser = await getCurrentUser();
-        if (currentUser) {
-          setUser(null);
-          router.push('/dashboard'); // Redirect if authenticated
-        } else {
-        }
-      } catch (err) {
-        console.error(err);
-        router.push('/dashboard'); // Redirect on error
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUser();
-  }, [router]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

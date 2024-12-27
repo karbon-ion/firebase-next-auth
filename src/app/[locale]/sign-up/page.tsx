@@ -35,7 +35,7 @@ const SignupPage = () => {
 
       await SignUp(email, password);
 
-      router.push('/auth/verify-email');
+      router.push('/sign-in');
     } catch (err: unknown) {
       const error = err as Error;
       setError(error.message);
