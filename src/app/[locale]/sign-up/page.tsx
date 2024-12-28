@@ -64,7 +64,7 @@ const SignupPage = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full mt-1 px-3 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
@@ -78,7 +78,7 @@ const SignupPage = () => {
               type="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full mt-1 px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
@@ -92,7 +92,7 @@ const SignupPage = () => {
               type="password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full mt-1 px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
