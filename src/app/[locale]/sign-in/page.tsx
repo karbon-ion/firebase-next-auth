@@ -62,7 +62,7 @@ const LoginPage = () => {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full mt-1 px-3 py-2 text-black border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
@@ -76,7 +76,7 @@ const LoginPage = () => {
               type="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full mt-1 px-3 py-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
