@@ -2,13 +2,12 @@
 
 import React, { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
 import { resetPassword } from "@/lib/firebase/auth";
+import { Link } from "@/i18n/routing";
 
 const ForgotPasswordPage = () => {
   const t = useTranslations("ForgotPasswordPage");
   const locale = useLocale();
-  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -82,12 +81,12 @@ const ForgotPasswordPage = () => {
         )}
 
         <p className="mt-4 text-sm text-center text-gray-600">
-          <a
-            href={`/${locale}/sign-in`}
+          <Link
+            href='/sign-in'
             className="text-blue-600 hover:underline"
           >
             {t("backToLogin")}
-          </a>
+          </Link>
         </p>
       </div>
     </div>

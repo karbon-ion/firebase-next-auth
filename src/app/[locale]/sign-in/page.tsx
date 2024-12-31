@@ -91,7 +91,7 @@ const LoginPage = () => {
         </form>
         <div className="flex flex-col space-y-4 mt-4 text-sm text-center text-gray-600">
           <Link
-            href='/auth/forgot-password'
+            href='/forgot-password'
             className="text-blue-600 hover:underline"
           >
             {t("forgotPassword")}
